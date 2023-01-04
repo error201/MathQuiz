@@ -10,8 +10,8 @@ var isRunning = false;
 
 
 var questions = ["What is the only even prime number?", "When you divide a chart into four sections, what are those sections called?",
-                "This calculus operation uses an infinite sum to find the area under a curve.","What is the mnemonic to aid in remembering the trigonometric functions?"]
-var answers = [["0", "2", "4"],["sections" ,"quarters", "quadrants"],["integral", "limit", "addend"], ["Sohcahtoa", "Sesquahanna", "Sakajawea"]]
+                "This calculus operation uses an infinite sum to find the area under a curve.","What is the mnemonic to aid in remembering the trigonometric functions?","The Cartesian coordinate system is named after which French mathematician?"]
+var answers = [["0", "2", "4"],["sections" ,"quarters", "quadrants"],["integral", "limit", "addend"], ["Sohcahtoa", "Sesquahanna", "Sakajawea"],["Descartes" ,"Voltaire","Foucault"]]
 
 
 // TODO: start the game
