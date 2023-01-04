@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Mathematics Quiz</title>
 </head>
+
 <body>
-    <h1 class="question">Question goes here</h1>
-    <div><input type="button" value="Option 1"></div>
-    <div><input type="button" value="Option 2"></div>   
-    <div><input type="button" value="Option 3"></div>   
+    <header>
+        <h1>Take the mathematics quiz!</h1>
+        <h2>Press start to begin.</h2>
+        <h1 id="time"></h1>
+        <button id="start">START</button>
+    </header>
+    <main>
+        <section id="question">
+            <h2></h2>
+        </section>
+        <section id="answers">
+            <button id="btn1" data-option="0">Button 1</button>
+            <button id="btn2" data-option="1">Button 2</button>
+            <button id="btn3" data-option="2">Button 3</button>
+        </section>
+    </main>
+    <footer>
+        <h3></h3>
+    </footer>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
