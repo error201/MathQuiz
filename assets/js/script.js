@@ -9,6 +9,10 @@ var isRunning = false;
 
 var iCorrect = 0;
 var iIncorrect = 0;
+var objScore = {
+    correct: 0,
+    initials: ""
+};
 
 // Questions.
 var questions = [
@@ -105,7 +109,6 @@ btnStart.on("click", start);
 answerEl.on('click', '.answer-button', function (event) {
     // Get the index to the answer from the button's data-key attribute.
     var btnIndex = $(event.target).attr('data-key')
-    console.log(btnIndex);
     if (keys[intIndex] == btnIndex) {
         iCorrect += 1;
         displayQuestion();

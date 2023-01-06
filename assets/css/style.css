@@ -1,21 +1,54 @@
 :root {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-    background-color: lightgray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(253, 203, 110);
+    --bordercolor: rgb(225, 112, 85);
+    --brightyarrow: rgb(253, 203, 110);
+    --background: rgb(250, 177, 160);
+    --buttonColor: rgb(0, 206, 201);
+    --startColor: rgb(0, 184, 148);
 }
 
 header {
-    align-items: center;
-    width:50%;
-    text-align: center;
-    background-color: gold;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
 }
+
+#top {
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--background);
+    border: 2px solid var(--bordercolor);
+    margin: 10px;
+}
+
+#score {
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--background);
+    border: 2px solid var(--bordercolor);
+    margin: 10px;
+}
+
+#score h2 {
+    margin-top: 30px;
+}
+
 #question {
     color: black;
 }
 
 main {
+    width: 100%;
     display: flexbox;
     padding: 20px;
+}
+
+main section {
+    justify-content: center;
 }
 
 #answers {
@@ -31,8 +64,8 @@ button {
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    background-color: var(--buttonColor);
     background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
@@ -45,18 +78,33 @@ button:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-#answer-button {
+#start {
     border: 0;
     min-height: 2rem;
-    min-width: 100px;
     line-height: 2.5;
     padding: 0 20px;
     font-size: 1rem;
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    background-color: var(--startColor);
     background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+#start:hover {
+    background-color: rgb(30, 214, 178);
+}
+
+#start:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 10px;
 }
