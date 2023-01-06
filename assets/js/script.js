@@ -3,16 +3,17 @@ var timeEl = $("#time");
 var btnStart = $("#start");
 var questionEl = $("#question");
 var answerEl = $("#answers");
+var topInitsEl = $("#initials");
+var topScoreEl = $("#highScore");
+var recordEl = $("#record");
+var topScore = localStorage.getItem("highScore");
+var topInits = localStorage.getItem("highInits");
 
 var intIndex = 0;
 var isRunning = false;
 
 var iCorrect = 0;
-var iIncorrect = 0;
-var objScore = {
-    correct: 0,
-    initials: ""
-};
+
 
 // Questions.
 var questions = [
@@ -38,12 +39,16 @@ var answers = [
     ["exponents", "multiplication", "subtraction"],
     ["30°", "45°", "90°"],
     ["googol", "zillion", "septazillion"],
-    ["Calculus", "Algebra", "Miltivariate"],
-    ["String Theory", "Set Theory", "Algebra"]
+    ["calculus", "algebra", "multivariate"],
+    ["string theory", "set theory", "algebra"]
 ];
 
 // Answer key (index in 'answers' array of the correct answer).
-var keys = [1, 2, 0, 0, 0, 2, 2, 0, 1, 2]
+var keys = [1, 2, 0, 0, 0, 2, 2, 0, 1, 2];
+
+// set some defaults.
+topInitsEl.text(topScore);
+topScoreEl.text(topInits);
 
 
 // Start the game!
@@ -54,16 +59,19 @@ function start() {
     } else {
         timeEl.show();
         isRunning = true;
+        $(btnStart).prop("disabled", true);
         displayQuestion();
         timeLeft = 30;
         timeEl.text("Time: " + timeLeft + "s");
         countdownTimer = setInterval(function () {
             timeLeft--;
             timeEl.text("Time: " + timeLeft + "s");
+            // When the timer expires...
             if (timeLeft <= 0) {
                 isRunning = false;
                 clearInterval(countdownTimer);
                 btnStart.text('START');
+                $(btnStart).prop("disabled", false);
                 timeLeft = 30
                 timeEl.text("Time: " + timeLeft + "s");
                 questionEl.text("");
@@ -72,6 +80,9 @@ function start() {
                     $.each(answerLiEl, function (i, answerLiEl) {
                         answerLiEl.remove();
                     })
+                }
+                if (iCorrect >= topScore) {
+                    showRecordUpdate();
                 }
             }
         }, 1000)
@@ -100,20 +111,48 @@ function displayQuestion() {
     }
 }
 
+// function to show the inputs for the highest score.
+function showRecordUpdate() {
+    var recordLabel = $('<label for="inits"><h3>Enter your initials:</h3></label>');
+    var recordText = $('<input type="text" id="inits" name="inits" required minlength="1" maxlength="3" size="5">');
+    var recordBtn = $('<button class="submit-button">Submit</button>');
+    recordEl.append(recordLabel);
+    recordEl.append(recordText);
+    recordEl.append(recordBtn);
+}
 
-// TODO: monitor for start button click.
+
+// Monitor for start button click.
 btnStart.on("click", start);
 
 
-// TODO: check for correct answer with a delegated event listener.
+// Check for correct answer with a delegated event listener.
 answerEl.on('click', '.answer-button', function (event) {
+    event.preventDefault();
     // Get the index to the answer from the button's data-key attribute.
     var btnIndex = $(event.target).attr('data-key')
     if (keys[intIndex] == btnIndex) {
         iCorrect += 1;
         displayQuestion();
     } else {
-        iIncorrect += 1;
         displayQuestion();
     }
 });
+
+// Submit your initials with a delegated event listener, then remove the inputs.
+recordEl.on('click', '.submit-button', function (event) {
+    event.preventDefault();
+    var myInitials = $("#inits").val().toUpperCase();
+    var myScore = iCorrect;
+    topScore = localStorage.setItem("highScore", myScore);
+    topInits = localStorage.setItem("highInits", myInitials);
+    topInitsEl.text(myScore);
+    topScoreEl.text(myInitials);
+    recordChildEl = $("#record").children();
+    if (recordChildEl) {
+        $.each(recordChildEl, function () {
+            recordChildEl.remove();
+        });
+    }
+}
+);

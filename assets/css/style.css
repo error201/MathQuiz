@@ -4,7 +4,6 @@
     --bordercolor: rgb(225, 112, 85);
     --brightyarrow: rgb(253, 203, 110);
     --background: rgb(250, 177, 160);
-    --buttonColor: rgb(0, 206, 201);
     --startColor: rgb(0, 184, 148);
 }
 
@@ -42,21 +41,23 @@ header {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    display: flexbox;
-    padding: 20px;
-}
-
-main section {
     justify-content: center;
 }
 
+main section {
+    text-align: center;
+}
+
 #answers {
-    flex-direction: column;
+    text-align: center;
 }
 
 button {
     border: 0;
+    width: 150px;
     min-height: 2rem;
     line-height: 2.5;
     padding: 0 20px;
@@ -65,7 +66,7 @@ button {
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     border-radius: 5px;
-    background-color: var(--buttonColor);
+    background-color: var(--bordercolor);
     background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
@@ -80,6 +81,7 @@ button:active {
 
 #start {
     border: 0;
+    width: auto;
     min-height: 2rem;
     line-height: 2.5;
     padding: 0 20px;
@@ -91,6 +93,38 @@ button:active {
     background-color: var(--startColor);
     background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+#start:disabled {
+    border: 0;
+    width: auto;
+    min-height: 2rem;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(133 , 133, 133);
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 5px;
+    background-color: red;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);    
+}
+
+#start:disabled:hover {
+    border: 0;
+    width: auto;
+    min-height: 2rem;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(133 , 133, 133);
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 5px;
+    background-color: red;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
 }
 
 #start:hover {
